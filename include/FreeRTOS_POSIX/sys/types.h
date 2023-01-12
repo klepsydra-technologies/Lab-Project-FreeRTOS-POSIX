@@ -192,6 +192,19 @@ typedef void                         * pthread_barrierattr_t;
     typedef long int                 off_t;
 #endif
 
+
+#define PTHREAD_ONCE_INIT       { 0, 0, 0, 0}
+
+    struct pthread_once_t_
+      {
+        int          state;
+        void *       semaphore;
+        int 		   numSemaphoreUsers;
+        int          done;        /* indicates if user function has been executed */
+      };
+
+    typedef struct pthread_once_t_ pthread_once_t;
+
 #ifdef __cplusplus
 }
 #endif
